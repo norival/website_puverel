@@ -1,4 +1,4 @@
-$desktopWidth: 900px;
+$desktopWidth: 992px;
 
 $bgColor: #151515;
 $fgColor: #fbfffb;
@@ -61,7 +61,7 @@ main {
     padding-top: 180px;
 
     @media (min-width: $desktopWidth) {
-        padding-top: 100px;
+        padding-top: 130px;
         transform: translateY(100%);
         animation: slideIn 0.5s ease-in forwards;
     }
