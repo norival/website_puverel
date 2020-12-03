@@ -14,6 +14,7 @@ class HomeController extends AbstractController
     public function homePage(): Response
     {
         return $this->render('home/index.html.twig', [
+            'title' => 'Camille Puverel',
         ]);
     }
 }

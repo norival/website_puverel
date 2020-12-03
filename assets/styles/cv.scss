@@ -1,5 +1,40 @@
+$bgColor: #151515;
+$fgColor: #fbfffb;
+
 .cvSection {
     h2 {
         text-transform: uppercase;
+        text-align: center;
+        border: 2px solid $fgColor;
+        border-left: none;
+        border-right: none;
+        padding: 10px 0;
+        margin-bottom: 20px;
+    }
+
+    .item {
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        h4 {
+            // font-weight: bold;
+
+            &:before {
+                content: "\f06c  ";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+
+                font-size: 0.7em;
+            }
+        }
+    }
+
+    .cvCursusItem {
+        .date {
+            text-align: center;
+            font-style: italic;
+        }
     }
 }

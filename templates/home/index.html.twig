@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -8,9 +8,9 @@
 {% endblock %}
 
 {% block header %}
+    <h1>{{ title }}</h1>
     <nav>
-        {{ include('home/nav-tree.html') }}
-        <ul class="d-sm-none" id="mobile-nav">
+        <ul class="d-lg-none linkList" id="mobile-nav">
             <li>
                 <a href="/cv">CV</a>
             </li>
@@ -21,13 +21,13 @@
                 <a href="/research">Research</a>
             </li>
         </ul>
+        {{ include('home/nav-tree.html') }}
     </nav>
 {% endblock %}
 
 {% block body %}
 <main>
-<h1>Camille Puverel</h1>
-<ul class="social">
+<ul class="social linkList">
     <li>
         <a href="mailto:camillepuverel@hotmail.fr">
             <i class="fas fa-envelope"></i>

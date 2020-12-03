@@ -4,17 +4,60 @@
 $bgColor: #151515;
 $fgColor: #fbfffb;
 
+html {
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: $bgColor;
+    color: $fgColor;
+    position: relative;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Boogaloo', cursive;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.linkList {
+    li {
+        padding: 0;
+
+        a {
+            display: block;
+            height: 100%;
+            width: 100%;
+
+            &:hover {
+                text-shadow: 0 0 3px white;
+                transition: all 0.3s ease-in 0s;
+            }
+        }
+    }
 }
 
 .credits {
     margin: 5px 10px;
     position: absolute;
-    font-size: 0.8em;
-    font-family: sans-serif;
+    font-size: 0.7em;
+    font-family: 'Roboto', sans-serif;
     font-style: italic;
-    color: $fgColor;
+    // color: $fgColor;
     bottom: 0;
     right: 0;
 }

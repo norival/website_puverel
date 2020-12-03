@@ -99,15 +99,6 @@ main {
         padding: 0;
         list-style: none;
 
-        h5 {
-            font-weight: bold;
-
-            &:before {
-                content: "\f06c  ";
-                font-family: "Font Awesome 5 Free";
-                font-weight: 900;
-            }
-        }
     }
 }
 .credits {
