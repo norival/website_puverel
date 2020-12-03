@@ -2,7 +2,15 @@ $bgColor: #151515;
 $fgColor: #fbfffb;
 
 .cvSection {
+    margin-bottom: 30px;
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
     h2 {
+        font-size: 2.5em;
         text-transform: uppercase;
         text-align: center;
         border: 2px solid $fgColor;
@@ -12,23 +20,51 @@ $fgColor: #fbfffb;
         margin-bottom: 20px;
     }
 
-    .item {
-        ul {
-            list-style: none;
-            padding: 0;
+    h3 {
+        text-align: center;
+        font-size: 2em;
+        position: relative;
+
+        span {
+            // border: 1px solid white;
+            padding: 0 15px;
+            background-color: $bgColor;
+            position: relative;
+            z-index: 1;
         }
 
-        h4 {
-            // font-weight: bold;
-
-            &:before {
-                content: "\f06c  ";
-                font-family: "Font Awesome 5 Free";
-                font-weight: 900;
-
-                font-size: 0.7em;
-            }
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            border-bottom: 2px solid $fgColor;
+            position: absolute;
+            top: 50%;
         }
+    }
+
+    h4 {
+        font-size: 1.5em;
+        &:before {
+            content: "\f06c  ";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+
+            font-size: 0.7em;
+        }
+    }
+
+    h5 {
+        font-size: 1.3em;
+    }
+
+    .smallTitle {
+        font-family: 'Boogaloo', cursive;
+        font-size: 1.3em;
+    }
+
+    .cvItem {
+        margin-bottom: 30px;
     }
 
     .cvCursusItem {
