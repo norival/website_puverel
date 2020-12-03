@@ -80,10 +80,6 @@ ul {
     max-height: 27%;
     max-width: 510px;
 
-    @media (min-width: $lgBreakpoint) {
-        max-width: 100%;
-    }
-
     // @media (min-width: 900px) {
     //     top: 5%;
     //     max-height: 74%;
@@ -110,9 +106,12 @@ ul {
         fill: $bgColor;
         stroke: $bgColor;
     }
+    tspan {
+        transition: all 0.3s ease-in 0s;
+    }
     tspan:hover {
-        stroke: blue!important;
-        fill: blue!important;
+        stroke: #c6c6c6!important;
+        fill: #c6c6c6!important;
     }
 
     #branch1, #branch2, #branch3, #branch4, #branch5, #branch6,
@@ -212,6 +211,44 @@ ul {
         stroke-opacity: 1;
         fill-opacity: 1;
         opacity: 1;
+    }
+}
+
+
+// *****************************************************************************
+// MEDIA QUERIES
+// *****************************************************************************
+
+@media (min-width: $lgBreakpoint) {
+    header {
+        position: relative;
+        margin-top: 80px;
+
+        h1 {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            margin: 0;
+            animation: fade-in 0.7s ease-in forwards;
+        }
+    }
+
+    .social {
+        animation: fade-in 0.7s ease-in forwards;
+    }
+
+    #tree {
+        max-width: 1250px;
+    }
+}
+
+@media (min-width: 1200px) {
+    header {
+        margin-top: 100px;
+    }
+
+    #tree {
+        max-width: 1350px;
     }
 }
 
