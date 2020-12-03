@@ -1,0 +1,160 @@
+$desktopWidth: 900px;
+
+$bgColor: #151515;
+$fgColor: #fbfffb;
+
+header {
+    position: fixed;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    width: 100vw;
+    z-index: 10;
+    background-color: $bgColor;
+    // box-shadow: 0 0 5px white;
+    padding: 5px;
+    transition: all 0.4s ease-in 0s;
+
+    color: white;
+
+    @media (min-width: $desktopWidth) {
+        transform: translateY(-100%);
+        animation: slideIn 0.5s ease-in forwards;
+        flex-direction: row;
+    }
+
+    #nav-tree {
+        display: block;
+        width: 170px;
+        transition: all 0.3s ease-in 0s;
+        svg {
+            width: 100%;
+            height: 100%;
+            path {
+                stroke: $fgColor;
+                stroke-width: 7px;
+            }
+            a, #seed {
+                display: none;
+            }
+        }
+    }
+
+    h1 {
+        display: block;
+        width: 100%;
+        margin: 0 20px;
+        text-align: center;
+        font-size: 2.5em;
+
+        @media (min-width: $desktopWidth) {
+            font-size: 3.5em;
+            display: inline-block;
+            text-align: left;
+        }
+    }
+}
+
+body {
+    background-color: $bgColor;
+    color: $fgColor;
+}
+
+main {
+    padding-top: 180px;
+
+    @media (min-width: $desktopWidth) {
+        padding-top: 100px;
+        transform: translateY(100%);
+        animation: slideIn 0.5s ease-in forwards;
+    }
+}
+@keyframes slideIn {
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.section {
+    h2 {
+        text-align: center;
+        margin: 0 auto 50px;
+        border-bottom: 2px solid $fgColor;
+        border-top: 2px solid $fgColor;
+        padding: 20px 0;
+        text-transform: uppercase;
+    }
+    & + .section {
+        margin-top: 50px;
+    }
+}
+
+.item {
+    h3 {
+        text-align: center;
+    }
+    .description {
+        padding: 0;
+        list-style: none;
+
+        h5 {
+            font-weight: bold;
+
+            &:before {
+                content: "\f06c  ";
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+            }
+        }
+    }
+}
+.credits {
+    position: static;
+    text-align: right;
+}
+.buttonList {
+    margin: 5px 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (min-width: $desktopWidth) {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    li {
+        display: inline-block;
+
+        & + li {
+            margin-top: 10px;
+            @media (min-width: $desktopWidth) {
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+
+        a, button {
+            display: block;
+            cursor: pointer;
+            text-align: center;
+            border: 2px solid $fgColor;
+            border-radius: 8px;
+            background-color: $bgColor;
+            color: $fgColor;
+            padding: 7px;
+            // margin-left: 5px;
+            transition: all 0.3s ease-in 0s;
+            width: 100%;
+
+            &:hover, &.current {
+                color: $bgColor;
+                background-color: $fgColor;
+            }
+        }
+    }
+}

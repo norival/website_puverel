@@ -1,0 +1,267 @@
+$bgColor: #151515;
+$fgColor: #fbfffb;
+
+// $secondaryColor: #092c52;
+$secondaryColor: #000;
+$neonBlue: #5fddfc;
+// $neonBlue: #c6e2ff;
+
+// font sizes
+$mobileFontSize: 1rem;
+$neonColor: red;
+
+$desktopWidth: 900px;
+
+$treeDelay: 1s;
+$initialOffset: 300;
+
+body {
+    position: relative;
+    background-color: $bgColor;
+    color: $fgColor;
+    font-family: 'Boogaloo', cursive;
+    font-size: 1.6rem;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+header {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    nav {
+        height: 100%;
+        width: 100%;
+    }
+}
+svg {
+    position: absolute;
+    bottom: 15%;
+    display: block;
+    margin: 0 auto;
+    max-height: 27%;
+    width: 100%;
+
+    @media (min-width: 900px) {
+        top: 5%;
+        max-height: 74%;
+    }
+
+    path, circle, rect {
+        font-variation-settings:normal;
+        opacity:1;
+        fill: none;
+        fill-opacity: 1;
+        fill-rule: evenodd;
+        stroke: $fgColor;
+        stroke-width: 2px;
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        stroke-miterlimit: 4;
+        stroke-dasharray: none;
+        stroke-opacity: 1;
+        stop-color: $fgColor;
+        stop-opacity: 1;
+        stroke-dashoffset: 0;
+    }
+    rect {
+        fill: $bgColor;
+        stroke: $bgColor;
+    }
+    tspan:hover {
+        stroke: blue!important;
+        fill: blue!important;
+    }
+
+    #branch1, #branch2, #branch3, #branch4, #branch5, #branch6,
+    #branch7, #branch8, #branch9, #branch10, #branch11, #branch12 {
+        @media (min-width: $desktopWidth) {
+            stroke-dasharray: $initialOffset;
+            stroke-dashoffset: $initialOffset;
+            animation: dash 2s ease-in forwards;
+        }
+    }
+    #branch1, #branch2 {
+        animation-delay: $treeDelay;
+    }
+    #branch3, #branch4 {
+        animation-duration: 1s;
+        animation-delay: $treeDelay + 1s;
+    }
+    #branch5, #branch6 {
+        animation-duration: 1s;
+        animation-delay: $treeDelay + 1.5s;
+    }
+    #branch7, #branch8, #branch9, #branch10, #branch11, #branch12 {
+        animation-duration: 1s;
+        animation-delay: $treeDelay + 2s;
+    }
+    #ground {
+        @media (min-width: $desktopWidth) {
+            stroke-dasharray: $initialOffset + 200px;
+            stroke-dashoffset: $initialOffset + 200px;
+            animation: dash 1s linear forwards;
+            // animation-delay: $treeDelay - 1s;
+        }
+    }
+    #seed {
+        stroke-opacity: 0;
+        @media (min-width: $desktopWidth) {
+            stroke-opacity: 1;
+            animation: fall $treeDelay ease-in forwards;
+        }
+    }
+    a {
+        display: none;
+        @media (min-width: $desktopWidth) {
+            display: inline-block;
+        }
+        text {
+            font-family: 'Boogaloo', cursive;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 3px;
+            line-height: 1.1696px;
+            letter-spacing: 0px;
+            word-spacing: 0px;
+            fill: #ffffff;
+            fill-opacity: 1;
+            stroke: #ffffff;
+            stroke-width: 0.0467839px;
+            stroke-linecap: butt;
+            stroke-linejoin: miter;
+            stroke-opacity: 0.996614;
+
+            // fill: #000;
+            fill-opacity: 0;
+            // stroke: #000;
+            stroke-width: 0.0467839px;
+            stroke-opacity: 0;
+
+            animation: fade-in 0.7s ease-in forwards;
+            animation-delay: $treeDelay + 2.3s;
+        }
+    }
+}
+@keyframes fall {
+    70% {
+        transform: translateY(203px);
+        opacity: 1;
+        fill: $bgColor;
+    }
+    100% {
+        transform: translateY(203px);
+        fill: $fgColor;
+        opacity: 0;
+    }
+}
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+@keyframes fade-in {
+    100% {
+        stroke-opacity: 1;
+        fill-opacity: 1;
+        opacity: 1;
+    }
+}
+#mobile-nav {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    top: 23%;
+    text-align: center;
+    font-size: 2em;
+
+    li {
+        color: $fgColor;
+        list-style: none;
+        padding: 10px;
+        margin: 0;
+
+        a {
+            color: $fgColor;
+            text-decoration: none;
+        }
+    }
+}
+main {
+    text-align: center;
+    position: absolute;
+    // top: 5%;
+    width: 100%;
+    height: 100%;
+
+    h1 {
+        font-size: 3em;
+        font-weight: bold;
+        margin: 10px;
+        opacity: 1;
+
+        @media (min-width: $desktopWidth) {
+            opacity: 0;
+            animation: fade-in 0.7s ease-in forwards;
+            animation-delay: $treeDelay + 2.3s;
+            position: absolute;
+            bottom: 15%;
+            text-align: center;
+            width: 100%;
+            margin: 10px 0;
+        }
+    }
+
+    .social {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        // display: none;
+        z-index: 20;
+
+        font-size: 2.5em;
+
+        opacity: 1;
+        @media (min-width: $desktopWidth) {
+            opacity: 0;
+            animation: fade-in 0.7s ease-in forwards;
+            animation-delay: $treeDelay + 3s;
+        }
+
+        li {
+            padding: 10px;
+            display: inline-block;
+
+            a {
+                display: block;
+                padding: 5px;
+
+                &:hover {
+                    transform: scale(1.2);
+                    transition: all 0.1s ease-in 0s;
+                }
+            }
+        }
+    }
+}
+
+.credits {
+    opacity: 1;
+    text-align: right;
+    width: 100%;
+    font-size: 0.7em;
+
+    @media (min-width: $desktopWidth) {
+        opacity: 0;
+        animation: fade-in 0.7s ease-in forwards;
+        animation-delay: $treeDelay + 3s;
+        z-index: 20;
+    }
+}

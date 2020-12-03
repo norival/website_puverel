@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Camille Puverel - {{ title }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('page') }}
+{% endblock %}
+
+{% block header %}
+    <a id="nav-tree" class="" href="{{ path('home') }}">
+        {{ include('home/nav-tree.html') }}
+    </a>
+    <h1>{{ title }}</h1>
+{% endblock %}
