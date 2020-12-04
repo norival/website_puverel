@@ -3,6 +3,58 @@ $desktopWidth: 992px;
 $bgColor: #151515;
 $fgColor: #fbfffb;
 
+// *****************************************************************************
+// ELEMENTS
+// *****************************************************************************
+
+.button {
+    padding: 10px;
+    border: 2px solid $fgColor;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease-in 0s;
+    z-index: 1;
+    display: block;
+
+    &::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: -100%;
+        background-color: $fgColor;
+        transition: all 0.2s ease-in 0s;
+        z-index: -1;
+    }
+
+    &:hover {
+        color: $bgColor;;
+
+        &::before {
+            transform: translateX(100%);
+        }
+    }
+
+    @media (min-width: 768px) {
+        display: inline-block;
+        padding: 10px 30px;
+    }
+}
+
+.blockLink {
+    &:hover {
+        text-shadow: 0 0 3px white;
+    }
+}
+
+// *****************************************************************************
+// HEADER
+// *****************************************************************************
+
 header {
     position: fixed;
     height: auto;
@@ -57,6 +109,15 @@ header {
     }
 }
 
+
+// *****************************************************************************
+// MAIN
+// *****************************************************************************
+
+body {
+    padding-bottom: 20px;
+}
+
 main {
     padding-top: 180px;
 
@@ -65,10 +126,101 @@ main {
         transform: translateY(100%);
         animation: slideIn 0.5s ease-in forwards;
     }
+
+    .section {
+        margin-bottom: 30px;
+
+        .smallTitle {
+            font-family: 'Boogaloo', cursive;
+            font-size: 1.3em;
+        }
+    }
+
+    .item {
+        margin-bottom: 30px;
+
+        & > ul > li {
+            margin-bottom: 30px;
+        }
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    h2 {
+        font-size: 2.5em;
+        text-transform: uppercase;
+        text-align: center;
+        border: 2px solid $fgColor;
+        border-left: none;
+        border-right: none;
+        padding: 10px 0;
+        margin-bottom: 20px;
+        // background-color: #1e1e1e;
+    }
+
+    h3 {
+        text-align: center;
+        font-size: 2em;
+        position: relative;
+        margin-bottom: 15px;
+
+        span {
+            // border: 1px solid white;
+            padding: 0 15px;
+            background-color: $bgColor;
+            position: relative;
+            z-index: 1;
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 100%;
+            border-bottom: 2px solid $fgColor;
+            position: absolute;
+            top: 50%;
+        }
+    }
+
+    h4 {
+        font-size: 1.5em;
+        &:before {
+            content: "\f06c  ";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+
+            font-size: 0.7em;
+        }
+    }
+
+    h5 {
+        font-size: 1.3em;
+    }
 }
+
+
+// *****************************************************************************
+// ANIMATIONS
+// *****************************************************************************
+
 @keyframes slideIn {
     100% {
         transform: translateY(0);
+    }
+}
+
+
+// *****************************************************************************
+// MEDIA QUERIES
+// *****************************************************************************
+
+// LARGE SCREENS ***************************************************************
+@media (min-width: 992px) {
+    body {
+        text-align: justify;
     }
 }
 

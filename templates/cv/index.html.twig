@@ -8,14 +8,14 @@
 {% block body %}
 <main>
     <div class="container">
-        <section class="cvSection cvSkills">
+        <section class="section cvSection cvSkills">
             <div class="row">
                 <div class="col-12">
                     <h2>Skills</h2>
                 </div>
                 {% for skill in skills %}
                     <div class="col-12 col-md-6">
-                        <article class="cvItem cvSkill">
+                        <article class="item cvSkill">
                             <h3><span>{{ skill.title }}</span></h3>
                             <ul>
                             {% for item in skill.items %}
@@ -40,14 +40,14 @@
                 {% endfor %}
             </div>
         </section>
-        <section class="cvSection cvCursus">
+        <section class="section cvSection cvCursus">
             <div class="row">
                 <div class="col-12">
                     <h2>Cursus</h2>
                 </div>
                 {% for item in cursus %}
                     <div class="col-12">
-                        <article class="cvItem cvCursusItem">
+                        <article class="item cvCursusItem">
                             <div class="row">
                                 <div class="col-12">
                                     <h3><span>{{ item.title }}</span></h3>
