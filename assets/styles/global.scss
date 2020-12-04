@@ -38,16 +38,16 @@ a {
     li {
         padding: 0;
 
-        a {
-            display: block;
-            height: 100%;
-            width: 100%;
+        // a {
+        //     display: block;
+        //     height: 100%;
+        //     width: 100%;
 
-            &:hover {
-                text-shadow: 0 0 3px white;
-                transition: all 0.3s ease-in 0s;
-            }
-        }
+        //     &:hover {
+        //         text-shadow: 0 0 3px white;
+        //         transition: all 0.3s ease-in 0s;
+        //     }
+        // }
     }
 }
 

@@ -1,0 +1,25 @@
+{% extends 'page.html.twig' %}
+
+{% block body %}
+<main>
+    <div class="container">
+        {% for content in contents %}
+            <section class="section">
+                <h2>{{ content.title }}</h2>
+                <div class="content">
+                    {{ content.description }}
+                </div>
+                <ul class="linkList ressources mt-4">
+                    {% for ressource in content.ressources %}
+                        <li>
+                            <a class="button" href="{{ path(ressource.path, ressource.params) }}">
+                                {{ ressource.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        {% endfor %}
+    </div>
+</main>
+{% endblock %}

@@ -51,6 +51,26 @@ $fgColor: #fbfffb;
     }
 }
 
+.linkList {
+    display: flex;
+    flex-direction: column;
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+        li {
+            margin-left: 10px;
+            margin-bottom: 0;
+        }
+    }
+}
+
 // *****************************************************************************
 // HEADER
 // *****************************************************************************
@@ -128,7 +148,7 @@ main {
     }
 
     .section {
-        margin-bottom: 30px;
+        margin-bottom: 40px;
 
         .smallTitle {
             font-family: 'Boogaloo', cursive;

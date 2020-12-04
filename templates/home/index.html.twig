@@ -12,13 +12,13 @@
     <nav>
         <ul class="d-lg-none linkList" id="mobile-nav">
             <li>
-                <a href="/cv">CV</a>
+                <a href="{{ path('cv') }}">CV</a>
             </li>
             <li>
-                <a href="/sensibilisation">Sensibilisation</a>
+                <a href="{{ path('sensibilisation') }}">Sensibilisation</a>
             </li>
             <li>
-                <a href="/research">Research</a>
+                <a href="{{ path('research') }}">Research</a>
             </li>
         </ul>
         {{ include('home/nav-tree.html') }}
