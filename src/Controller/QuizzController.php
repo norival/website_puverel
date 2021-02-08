@@ -40,9 +40,8 @@ class QuizzController extends AbstractController
         $species = $quizz->getSpeciesList()[$quizz->getCurrentTurn() - 1 ];
 
         return $this->render('quizz/index.html.twig', [
+            'title' => "Quizz feuillus : {$quizz->getNSpecies()} espèces",
             'quizz' => $quizz,
-            /* 'species' => $quizz->getSpeciesList()[$quizz->getCurrentTurn() - 1 ], */
-            /* 'nSpecies' => $quizz->getNSpecies(), */
         ]);
     }
 }

@@ -1,0 +1,111 @@
+$desktopWidth: 992px;
+
+$bgColor: #151515;
+$fgColor: #fbfffb;
+
+#quizz {
+    img {
+        background-color: #fbfffb;
+        padding: 10px;
+        max-width: 100%;
+        max-height: 250px;
+        width: auto;
+        height: auto;
+        margin: 5px auto;
+        display: block;
+        border-radius: 35px;
+    }
+
+    #quizz-choices {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        li {
+            width: 100%;
+            margin-bottom: 10px;
+
+            & + li {
+                margin-top: 0;
+            }
+        }
+        a {
+            width: 100%;
+        }
+    }
+
+    .score {
+        font-weight: bold;
+        font-size: 2em;
+        text-align: center;
+        border: 3px solid white;
+        margin: 30px auto;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .speciesList {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        li {
+            width: 100%;
+        }
+
+        h3 {
+            display: block;
+            text-align: center;
+            border: 1px solid #fbfffb;
+            padding: 8px;
+            border-left: none;
+            border-right: none;
+        }
+    }
+
+    a, button {
+        display: block;
+        cursor: pointer;
+        text-align: center;
+        border: 2px solid $fgColor;
+        border-radius: 8px;
+        background-color: $bgColor;
+        color: $fgColor;
+        padding: 7px;
+        // margin-left: 5px;
+        transition: all 0.3s ease-in 0s;
+        width: 100%;
+
+        &:hover, &.current {
+            color: $bgColor;
+            background-color: $fgColor;
+        }
+    }
+}
+
+.buttonList {
+    margin: 5px 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (min-width: $desktopWidth) {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    li {
+        display: inline-block;
+
+        & + li {
+            margin-top: 10px;
+            @media (min-width: $desktopWidth) {
+                margin-top: 0;
+                margin-left: 10px;
+            }
+        }
+    }
+}

@@ -1,53 +1,76 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Le quizz des feuillus{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('page') }}
+    {{ encore_entry_link_tags('quizz') }}
+{% endblock %}
+
+{% block header %}
+    <a id="nav-tree" class="" href="{{ path('home') }}">
+        {{ include('home/nav-tree.html') }}
+    </a>
+    <h1>{{ title }}</h1>
+{% endblock %}
 
 {% block body %}
     <main class="container">
-        <ul class="buttonList hiddenMobile">
+        <ul class="buttonList d-none">
             <li>
                 <a
                     href="/quizz/feuillus/5"
-                    class="{% if quizz.nSpecies == 5 %}current{% endif %}"
+                    class="{% if quizz.nSpecies == 5 %}current{% endif %} button"
                     >5 Espèces</a>
             </li>
             <li>
                 <a
                     href="/quizz/feuillus/10"
-                    class="{% if quizz.nSpecies == 10 %}current{% endif %}"
+                    class="{% if quizz.nSpecies == 10 %}current{% endif %} button"
                     >10 Espèces</a>
             </li>
             <li>
                 <a
                     href="/quizz/feuillus/15"
-                    class="{% if quizz.nSpecies == 15 %}current{% endif %}"
+                    class="{% if quizz.nSpecies == 15 %}current{% endif %} button"
                     >15 Espèces</a>
             </li>
             <li>
-                <a href="#">Fiche récap'</a>
+                <a href="#" class="button">Fiche récap'</a>
             </li>
             <li>
-                <a href="#">Les érables</a>
+                <a href="#" class="button">Les érables</a>
             </li>
         </ul>
         <div id="quizz">
-            <h2>Feuille {{ quizz.currentTurn }} / {{ quizz.nTurns }}</h2>
-            <img
-                id="quizz-picture"
-                src="{{ asset('build/images/species/' ~ quizz.currentSpecies.filePath) }}"
-                alt="Image de la feuille">
-            <form action="#">
-                <ul id="quizz-choices" class="buttonList">
-                    {% for species in quizz.choices %}
-                        <li>
-                            <button name="choice" type="submit" value="{{ species.commonName }}">
-                                {{ species.commonName }}
-                            </button>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </form>
+            <div class="row">
+                <div class="col-12">
+                    <h2>Feuille {{ quizz.currentTurn }} / {{ quizz.nTurns }}</h2>
+                </div>
+                <div class="col-12">
+                    <img
+                        id="quizz-picture"
+                        src="{{ asset('build/images/species/' ~ quizz.currentSpecies.filePath) }}"
+                        alt="Image de la feuille">
+                </div>
+                <div class="col-12">
+                    <form action="#">
+                        <div class="row">
+                            {% for species in quizz.choices %}
+                                <div class="col-12 col-md-6 col-lg-3 mt-4">
+                                    <button name="choice" type="submit" value="{{ species.commonName }}" class="button">
+                                        {{ species.commonName | capitalize }}
+                                    </button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
-    {{ quizz.currentSpecies.genus }} {{ quizz.currentSpecies.species }} ({{ quizz.currentSpecies.commonName }})
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('page') }}
 {% endblock %}

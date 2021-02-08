@@ -27,6 +27,7 @@ Encore
     .addEntry('home', './assets/home.js')
     .addEntry('page', './assets/page.js')
     .addEntry('cv', './assets/cv.js')
+    .addEntry('quizz', './assets/quizz.js')
     //.addEntry('page1', './assets/page1.js')
     //.addEntry('page2', './assets/page2.js')
     
