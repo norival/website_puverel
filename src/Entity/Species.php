@@ -42,6 +42,11 @@ class Species
      */
     private $quizz;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Species
     public function setQuizz(?int $quizz): self
     {
         $this->quizz = $quizz;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
