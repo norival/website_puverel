@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SpeciesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SpeciesRepository::class)
@@ -14,26 +15,31 @@ class Species
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"quizz"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Groups({"quizz"})
      */
     private $genus;
 
     /**
      * @ORM\Column(type="string", length=60)
+     * @Groups({"quizz"})
      */
     private $species;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Groups({"quizz"})
      */
     private $common_name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"quizz"})
      */
     private $file_path;
 
@@ -44,6 +50,7 @@ class Species
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"quizz"})
      */
     private $description;
 
@@ -90,7 +97,7 @@ class Species
 
     public function getFilePath(): ?string
     {
-        return $this->file_path;
+        return "build/images/species/{$this->file_path}";
     }
 
     public function setFilePath(string $file_path): self

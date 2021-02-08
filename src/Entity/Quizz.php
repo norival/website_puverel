@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\QuizzRepository;
 use App\Repository\SpeciesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=QuizzRepository::class)
@@ -15,11 +16,13 @@ class Quizz
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"front"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"front"})
      */
     private $n_species;
 
@@ -30,21 +33,25 @@ class Quizz
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"front"})
      */
     private $n_turns;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"front"})
      */
     private $current_turn;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"front"})
      */
     private $score;
 
     /**
      * @ORM\Column(type="array", nullable=true)
+     * @Groups({"front"})
      */
     private $choices = [];
 
@@ -119,6 +126,9 @@ class Quizz
         return $this;
     }
 
+    /**
+     * @Groups({"front"})
+     */
     public function getCurrentSpecies(): Species
     {
         return $this->getSpeciesList()[$this->getCurrentTurn() - 1 ];
@@ -151,7 +161,7 @@ class Quizz
         $this->setChoices();
     }
 
-    public function getChoices(): Array
+    public function getChoices(): array
     {
         return $this->choices;
     }
@@ -171,5 +181,15 @@ class Quizz
         $this->choices = $choices;
 
         return $this;
+    }
+
+    public function check(int $choice): bool {
+        if ($choice === $this->getCurrentSpecies()->getId()) {
+            $this->score++;
+
+            return true;
+        }
+
+        return false;
     }
 }

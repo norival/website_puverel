@@ -50,19 +50,21 @@
                 <div class="col-12">
                     <img
                         id="quizz-picture"
-                        src="{{ asset('build/images/species/' ~ quizz.currentSpecies.filePath) }}"
+                        src="{{ asset(quizz.currentSpecies.filePath) }}"
                         alt="Image de la feuille">
                 </div>
                 <div class="col-12">
                     <form action="#">
-                        <div class="row">
-                            {% for species in quizz.choices %}
-                                <div class="col-12 col-md-6 col-lg-3 mt-4">
-                                    <button name="choice" type="submit" value="{{ species.commonName }}" class="button">
-                                        {{ species.commonName | capitalize }}
-                                    </button>
-                                </div>
-                            {% endfor %}
+                        <div id="quizz-choices">
+                            <div class="row">
+                                {% for species in quizz.choices %}
+                                    <div class="col-12 col-md-6 col-lg-3 mt-4">
+                                        <button name="choice" type="submit" value="{{ species.id }}" class="button">
+                                            {{ species.commonName | capitalize }}
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -73,4 +75,5 @@
 
 {% block javascripts %}
     {{ encore_entry_script_tags('page') }}
+    {{ encore_entry_script_tags('quizz') }}
 {% endblock %}
