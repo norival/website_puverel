@@ -1,7 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuizzController!{% endblock %}
+{% block title %}Le quizz des feuillus{% endblock %}
 
 {% block body %}
-    Coucou
+    <main class="container">
+        <ul class="buttonList hiddenMobile">
+            <li>
+                <a
+                    href="/quizz/feuillus/5"
+                    class="{% if quizz.nSpecies == 5 %}current{% endif %}"
+                    >5 Espèces</a>
+            </li>
+            <li>
+                <a
+                    href="/quizz/feuillus/10"
+                    class="{% if quizz.nSpecies == 10 %}current{% endif %}"
+                    >10 Espèces</a>
+            </li>
+            <li>
+                <a
+                    href="/quizz/feuillus/15"
+                    class="{% if quizz.nSpecies == 15 %}current{% endif %}"
+                    >15 Espèces</a>
+            </li>
+            <li>
+                <a href="#">Fiche récap'</a>
+            </li>
+            <li>
+                <a href="#">Les érables</a>
+            </li>
+        </ul>
+        <div id="quizz">
+            <h2>Feuille {{ quizz.currentTurn }} / {{ quizz.nTurns }}</h2>
+            <img
+                id="quizz-picture"
+                src="{{ asset('build/images/species/' ~ quizz.currentSpecies.filePath) }}"
+                alt="Image de la feuille">
+            <form action="#">
+                <ul id="quizz-choices" class="buttonList">
+                    {% for species in quizz.choices %}
+                        <li>
+                            <button name="choice" type="submit" value="{{ species.commonName }}">
+                                {{ species.commonName }}
+                            </button>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </form>
+        </div>
+    </main>
+    {{ quizz.currentSpecies.genus }} {{ quizz.currentSpecies.species }} ({{ quizz.currentSpecies.commonName }})
 {% endblock %}

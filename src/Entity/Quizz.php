@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\QuizzRepository;
+use App\Repository\SpeciesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +42,17 @@ class Quizz
      * @ORM\Column(type="integer")
      */
     private $score;
+
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $choices = [];
+
+    public function __construct(private SpeciesRepository $speciesRepository)
+    {
+        /* dump($this->speciesRepository->findBy([ 'quizz' => $this->n_species ])); */
+        /* dump($this->speciesRepository->findAll()); */
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +115,60 @@ class Quizz
     public function setScore(int $score): self
     {
         $this->score = $score;
+
+        return $this;
+    }
+
+    public function getCurrentSpecies(): Species
+    {
+        return $this->getSpeciesList()[$this->getCurrentTurn() - 1 ];
+    }
+
+    public function init($nSpecies)
+    {
+        $this->setNSpecies($nSpecies);
+
+        // TODO generate species list based on number of species
+        $speciesListUnique = $this->speciesRepository->findBy([ 'quizz' => $this->getNSpecies() ]);
+
+        $this->species_list =
+            $this->n_species === 5
+            ? array_merge($speciesListUnique, $speciesListUnique, $speciesListUnique)
+            : array_merge($speciesListUnique, $speciesListUnique);
+        shuffle($this->species_list);
+
+        // TODO set the current turn to 1
+        $this->setCurrentTurn(1);
+
+        // TODO set the number of turns depending on the number of species
+        $this->setNTurns(
+            $this->getNSpecies() === 5
+            ? 3 * $nSpecies
+            : 2 * $nSpecies
+        );
+
+        $this->setScore(0);
+        $this->setChoices();
+    }
+
+    public function getChoices(): Array
+    {
+        return $this->choices;
+    }
+
+    public function setChoices(): self
+    {
+        $speciesListUnique = array_unique($this->species_list, SORT_REGULAR);
+        $choices = array_filter($speciesListUnique, fn($species) => $species !== $this->getCurrentSpecies());
+        $choices = array_rand($choices, 3);
+        $choices = array_flip($choices);
+        $choices = [
+            $this->getCurrentSpecies(),
+            ...array_intersect_key($speciesListUnique, $choices)
+        ];
+        shuffle($choices);
+
+        $this->choices = $choices;
 
         return $this;
     }
