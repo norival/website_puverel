@@ -82,6 +82,12 @@ $fgColor: #fbfffb;
             background-color: $fgColor;
         }
     }
+
+    h3 {
+        &::before {
+            display: none;
+        }
+    }
 }
 
 .buttonList {

@@ -138,8 +138,15 @@ class Quizz
         return $this;
     }
 
-    public function getCurrentSpecies(): Species
+    /**
+     * @Groups({"front"})
+     */
+    public function getCurrentSpecies(): ?Species
     {
+        if ($this->current_turn > $this->n_turns) {
+            return null;
+        }
+
         return $this->getSpeciesList()[$this->getCurrentTurn() - 1 ];
     }
 
@@ -208,7 +215,6 @@ class Quizz
     public function nextTurn()
     {
         $this->current_turn++;
-        $this->setChoices();
 
         // check if this is the last turn
         if ($this->getCurrentTurn() > $this->getNTurns()) {
@@ -216,6 +222,8 @@ class Quizz
 
             return $this;
         }
+
+        $this->setChoices();
 
         return $this;
     }

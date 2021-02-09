@@ -73,7 +73,7 @@ export class QuizzView
         });
 
         const tpl = `
-            <h2>Feuille ${quizzData.currentTurn} / ${quizzData.n_turns}</h2>
+            <h2>Feuille ${quizzData.current_turn} / ${quizzData.n_turns}</h2>
             <img id="quizz-picture" src="${this.manifest[quizzData.currentSpecies.file_path]}" alt="">
             <form action="/quizz/feuillus/${quizzData.n_species}/result" method="POST">
                 <div id="quizz-choices">
