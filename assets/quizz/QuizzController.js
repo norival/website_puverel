@@ -44,9 +44,11 @@ export class QuizzController
 
 
     onQuizzNextReceived = (quizzData) => {
-        if (quizzData.end) {
+        console.log(quizzData);
+        if (quizzData.state == 1) {
             // quizz finished
             this.view.renderQuizzEnd(quizzData);
+
             return ;
         }
 

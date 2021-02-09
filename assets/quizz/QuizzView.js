@@ -28,15 +28,15 @@ export class QuizzView
 
         let tpl = `
             <h2>Bravo !</h2>
-            <p>Tu as réussi ! C'était le ${result.choice.commonName}.</p>
+            <p>Tu as réussi ! C'était le ${result.choice.common_name}.</p>
         `;
 
         if (!result.result) {
             tpl = `
                 <h2>Loupé !</h2>
-                <p>La bonne réponse était ${result.goodSpecies.commonName} et non ${result.choice.commonName}.</p>
-                <p>${result.goodSpecies.description}</p>
-                <img src="${this.manifest[result.goodSpecies.filePath]}" alt="">
+                <p>La bonne réponse était ${result.goodSpecies.common_name} et non ${result.choice.common_name}.</p>
+                <p>${result.goodSpecies.description ?? '<em>Aucune description</em>'}</p>
+                <img src="${this.manifest[result.goodSpecies.file_path]}" alt="">
             `
         }
 
@@ -56,27 +56,26 @@ export class QuizzView
     /**
      * Render the quizz
      *
-     * @param {turn: int, nSpecies: int, species: [], choices: [], nTurns: int}
+     * @param {turn: int, n_species: int, species: [], choices: [], n_turns: int}
      *  quizzData The data for the current turn
      * @returns {undefined}
      */
     renderQuizz = (quizzData) => {
-        console.log(quizzData);
         let listItems = '';
         quizzData.choices.forEach(choice => {
             listItems += `
                 <div class="col-12 col-md-6 col-lg-3 mt-4">
                     <button name="choice" type="submit" value="${choice.id}">
-                        ${choice.commonName}
+                        ${choice.common_name}
                     </button>
                 </div>
             `;
         });
 
         const tpl = `
-            <h2>Feuille ${quizzData.currentTurn} / ${quizzData.nTurns}</h2>
-            <img id="quizz-picture" src="${this.manifest[quizzData.currentSpecies.filePath]}" alt="">
-            <form action="/quizz/feuillus/${quizzData.nSpecies}/result" method="POST">
+            <h2>Feuille ${quizzData.currentTurn} / ${quizzData.n_turns}</h2>
+            <img id="quizz-picture" src="${this.manifest[quizzData.currentSpecies.file_path]}" alt="">
+            <form action="/quizz/feuillus/${quizzData.n_species}/result" method="POST">
                 <div id="quizz-choices">
                     <div class="row">
                         ${listItems}
@@ -100,13 +99,27 @@ export class QuizzView
 
     renderQuizzEnd = (quizzData) => {
         let listItems = '';
-        quizzData.speciesList.forEach(species => {
+
+        const flags = new Set();
+        const speciesListUnique = quizzData.species_list.filter(entry => {
+            if (flags.has(entry.id)) {
+                return false;
+            }
+
+            flags.add(entry.id);
+            return true;
+        });
+        // console.log(speciesListUnique);
+
+        speciesListUnique.forEach(species => {
+        // for (const species of quizzData.speciesListUnique) {
+            // console.log(species);
             listItems += `
                 <li>
                     <h3>${species.common_name}</h3>
-                    <img src="${this.manifest[species.file_name]}" alt="">
+                    <img src="${this.manifest[species.file_path]}" alt="">
                     <p class="description">
-                        ${species.description}
+                        ${species.description ?? '<em>Aucune description</em>'}
                     </p>
                 </li>
             `;
@@ -115,8 +128,8 @@ export class QuizzView
         const tpl = `
             <div id="result">
                 <h2>Le quizz est terminé !</h2>
-                <div class="score">${quizzData.score} / ${quizzData.nTurns}</div>
-                <p>Il y avait ces ${quizzData.nSpecies} espèces :</p>
+                <div class="score">${quizzData.score} / ${quizzData.n_turns}</div>
+                <p>Il y avait ces ${quizzData.n_species} espèces :</p>
                 <ul class="speciesList">
                     ${listItems}
                 </ul>

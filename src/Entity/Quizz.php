@@ -12,6 +12,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class Quizz
 {
+    const STATE_RUNNING  = 0;
+    const STATE_FINISHED = 1;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -28,6 +31,7 @@ class Quizz
 
     /**
      * @ORM\Column(type="array")
+     * @Groups({"front"})
      */
     private $species_list = [];
 
@@ -54,6 +58,14 @@ class Quizz
      * @Groups({"front"})
      */
     private $choices = [];
+
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     * @Groups({"front"})
+     */
+    private $state;
+
+    private $species_list_unique;
 
     public function __construct(private SpeciesRepository $speciesRepository)
     {
@@ -126,9 +138,6 @@ class Quizz
         return $this;
     }
 
-    /**
-     * @Groups({"front"})
-     */
     public function getCurrentSpecies(): Species
     {
         return $this->getSpeciesList()[$this->getCurrentTurn() - 1 ];
@@ -159,6 +168,9 @@ class Quizz
 
         $this->setScore(0);
         $this->setChoices();
+        $this->setState(self::STATE_RUNNING);
+
+        return $this;
     }
 
     public function getChoices(): array
@@ -191,5 +203,37 @@ class Quizz
         }
 
         return false;
+    }
+
+    public function nextTurn()
+    {
+        $this->current_turn++;
+        $this->setChoices();
+
+        // check if this is the last turn
+        if ($this->getCurrentTurn() > $this->getNTurns()) {
+            $this->setState(self::STATE_FINISHED);
+
+            return $this;
+        }
+
+        return $this;
+    }
+
+    public function getState(): ?int
+    {
+        return $this->state;
+    }
+
+    public function setState(?int $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function isFinished(): bool
+    {
+        return (bool) $this->getState();
     }
 }

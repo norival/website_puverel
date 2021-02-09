@@ -20,8 +20,10 @@ class QuizzController extends AbstractController
         private SpeciesRepository $speciesRepository,
         private SessionInterface $session,
         private QuizzRepository $quizzRepo,
-        private EntityManagerInterface $em
+        private EntityManagerInterface $em,
+        private SerializerInterface $serializer
     ) {
+        $this->session->start();
     }
 
     /**
@@ -31,8 +33,13 @@ class QuizzController extends AbstractController
     {
         $quizz = $this->getQuizz($nSpecies);
 
-        $this->em->persist($quizz);
-        $this->em->flush();
+        if ($quizz->isFinished()) {
+            $quizz = new Quizz($this->speciesRepository);
+            $quizz->init($nSpecies);
+        }
+
+        $this->persistQuizz($quizz);
+
         $species = $quizz->getSpeciesList()[$quizz->getCurrentTurn() - 1 ];
 
         return $this->render('quizz/index.html.twig', [
@@ -48,7 +55,9 @@ class QuizzController extends AbstractController
         if ($quizzId) {
             $quizz = $this->quizzRepo->find($quizzId);
 
-            return $quizz;
+            if ($quizz) {
+                return $quizz;
+            }
         }
 
         $quizz = new Quizz($this->speciesRepository);
@@ -57,25 +66,39 @@ class QuizzController extends AbstractController
         return $quizz;
     }
 
+    private function persistQuizz(Quizz $quizz)
+    {
+        $this->em->persist($quizz);
+        $this->em->flush();
+
+        $this->session->set('quizz_id', $quizz->getId());
+        /* dump($_SESSION); */
+        /* dump($this->session->get('quizz_id')); */
+
+        return $this;
+    }
+
     /**
      * @Route("/api/quizz/{nSpecies}/result", name="quizz_result", methods="POST")
      */
     public function result(
         Request $request,
         int $nSpecies
-    ): JsonResponse {
-        $quizz = $this->getQuizz($nSpecies);
-
-        $this->em->persist($quizz);
-        $this->em->flush();
-
+    ): JsonResponse
+    {
+        $quizz  = $this->getQuizz($nSpecies);
         $choice = json_decode((string) $request->getContent(), true)['choice'];
+        $result = $quizz->check($choice);
 
-        return $this->json([
-            'result'      => $quizz->check($choice),
+        $this->persistQuizz($quizz);
+
+        $json = $this->serializer->serialize([
+            'result'      => $result,
             'choice'      => $this->speciesRepository->find($choice),
             'goodSpecies' => $quizz->getCurrentSpecies(),
-        ]);
+        ], 'json', [ 'groups' => [ 'front', 'quizz' ] ] );
+
+        return JsonResponse::fromJsonString($json);
     }
 
     /**
@@ -84,16 +107,17 @@ class QuizzController extends AbstractController
     public function next(
         Request $request,
         int $nSpecies
-    ): JsonResponse {
+    ): JsonResponse
+    {
         $quizz = $this->getQuizz($nSpecies);
-        $quizz->setChoices();
+        $quizz->nextTurn();
 
-        $this->em->persist($quizz);
-        $this->em->flush();
-        dump($quizz);
+        $this->persistQuizz($quizz);
 
-        return $this->json([
+        $json = $this->serializer->serialize([
             'quizz' => $quizz,
-        ]);
+        ], 'json', [ 'groups' => [ 'front', 'quizz' ] ] );
+
+        return JsonResponse::fromJsonString($json);
     }
 }
