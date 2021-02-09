@@ -5,8 +5,8 @@ export class QuizzController
 {
     constructor()
     {
-        this.model = new QuizzModel();
-        this.view  = new QuizzView();
+        this.model = new QuizzModel(document.getElementById('quizz').dataset.nSpecies);
+        this.view = new QuizzView();
     }
 
     /**
@@ -44,7 +44,6 @@ export class QuizzController
 
 
     onQuizzNextReceived = (quizzData) => {
-        console.log(quizzData);
         if (quizzData.state == 1) {
             // quizz finished
             this.view.renderQuizzEnd(quizzData);

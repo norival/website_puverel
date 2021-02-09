@@ -29,7 +29,7 @@ class QuizzController extends AbstractController
     /**
      * @Route("/quizz_feuillus/{nSpecies}", name="quizz")
      */
-    public function index($nSpecies): Response
+    public function index(int $nSpecies): Response
     {
         $quizz = $this->getQuizz($nSpecies);
 
@@ -55,7 +55,7 @@ class QuizzController extends AbstractController
         if ($quizzId) {
             $quizz = $this->quizzRepo->find($quizzId);
 
-            if ($quizz) {
+            if ($quizz && $quizz->getNSpecies() === $nSpecies) {
                 return $quizz;
             }
         }

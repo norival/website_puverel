@@ -1,9 +1,14 @@
 export class QuizzModel
 {
+    constructor(nSpecies)
+    {
+        this.nSpecies = nSpecies;
+    }
+
+
     checkChoice(callback, choice)
     {
-        console.log(choice);
-        fetch('/api/quizz/5/result', {
+        fetch(`/api/quizz/${this.nSpecies}/result`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -19,7 +24,7 @@ export class QuizzModel
 
     getNextSpecies(callback)
     {
-        fetch('/api/quizz/5/next', {
+        fetch(`/api/quizz/${this.nSpecies}/next`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

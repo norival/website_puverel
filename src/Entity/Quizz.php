@@ -155,7 +155,7 @@ class Quizz
         $this->setNSpecies($nSpecies);
 
         // TODO generate species list based on number of species
-        $speciesListUnique = $this->speciesRepository->findBy([ 'quizz' => $this->getNSpecies() ]);
+        $speciesListUnique = $this->speciesRepository->findByQuizz($this->getNSpecies());
 
         $this->species_list =
             $this->n_species === 5
