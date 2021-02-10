@@ -229,6 +229,7 @@ main {
     position: absolute;
     background-color: $bgColor;
     top: 0;
+    left: 0;
     box-shadow: 0 2px 30px $fgColor;
     width: 100%;
 
@@ -269,6 +270,26 @@ main {
     body {
         text-align: justify;
     }
+
+    /*************************************************************************
+     * Responsive menu
+     */
+
+    .responsiveMenu {
+        ul {
+            display: flex;
+            justify-content: space-between;
+
+            li {
+                flex: 1 0;
+            }
+
+            .navLink {
+                border: 0;
+            }
+        }
+    }
+
 }
 
 // .section {
