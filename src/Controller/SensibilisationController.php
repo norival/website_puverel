@@ -2,22 +2,24 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SensibilisationController extends AbstractController
+class SensibilisationController extends PageController
 {
     /**
      * @Route("/sensibilisation", name="sensibilisation")
      */
     public function index(): Response
     {
+        $menu = $this->menuHelper->getMenu('main');
+
         $contents = json_decode(file_get_contents('../var/sensibilisation.json'), true);
 
         return $this->render('sensibilisation/index.html.twig', [
             'title'    => 'Sensibilisation',
             'contents' => $contents,
+            'menu'     => $menu,
         ]);
     }
 

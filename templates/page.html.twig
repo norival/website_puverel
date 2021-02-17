@@ -11,32 +11,19 @@
     <a id="nav-tree" class="" href="{{ path('home') }}">
         {{ include('home/nav-tree.html') }}
     </a>
-    <nav class="responsiveMenu">
-        {% set currentPath = app.request.pathInfo %}
+    <h1>{{ title }}</h1>
+    {% set currentPath = app.request.pathInfo %}
+    <nav>
         <ul>
+        {% for menuItem in menu.menuItems %}
             <li>
                 <a
-                    class="navLink{% if currentPath == path("home") %} current{% endif %}"
-                    href="{{ path("home") }}">Home</a>
+                    class="navLink{% if currentPath == path(menuItem.path) %} current{% endif %}"
+                    href="{{ path(menuItem.path) }}">{{ menuItem.name }}</a>
             </li>
-            <li>
-                <a
-                    class="navLink{% if currentPath == path("cv") %} current{% endif %}"
-                    href="{{ path("cv") }}">CV</a>
-            </li>
-            <li>
-                <a
-                    class="navLink{% if currentPath == path("sensibilisation") %} current{% endif %}"
-                    href="{{ path("sensibilisation") }}">Sensibilisation</a>
-            </li>
-            <li>
-                <a
-                    class="navLink{% if currentPath == path("research") %} current{% endif %}"
-                    href="{{ path("research") }}">Research</a>
-            </li>
+        {% endfor %}
         </ul>
     </nav>
-    <h1>{{ title }}</h1>
 {% endblock %}
 
 {% block javascripts %}
