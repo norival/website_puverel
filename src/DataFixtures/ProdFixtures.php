@@ -29,22 +29,26 @@ class ProdFixtures extends Fixture implements FixtureGroupInterface
         $mainMenu->setName('main');
 
         $menuItem = new MenuItem();
-        $menuItem->setPath('/');
+        $menuItem->setPath('home');
+        $menuItem->setName('Home');
         $menuItem->addMenu($mainMenu);
         $manager->persist($menuItem);
 
         $menuItem = new MenuItem();
-        $menuItem->setPath('/cv');
+        $menuItem->setPath('cv');
+        $menuItem->setName('CV');
         $menuItem->addMenu($mainMenu);
         $manager->persist($menuItem);
 
         $menuItem = new MenuItem();
-        $menuItem->setPath('/research');
+        $menuItem->setPath('research');
+        $menuItem->setName('Research');
         $menuItem->addMenu($mainMenu);
         $manager->persist($menuItem);
 
         $menuItem = new MenuItem();
-        $menuItem->setPath('/sensibilisation');
+        $menuItem->setPath('sensibilisation');
+        $menuItem->setName('Sensibilisation');
         $menuItem->addMenu($mainMenu);
         $manager->persist($menuItem);
 
