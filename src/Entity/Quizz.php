@@ -73,7 +73,7 @@ class Quizz
         /* dump($this->speciesRepository->findAll()); */
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
