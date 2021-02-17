@@ -76,26 +76,21 @@ $fgColor: #fbfffb;
 // *****************************************************************************
 
 header {
-    position: fixed;
+    margin-bottom: 30px;
+    position: relative;
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    // justify-content: left;
     align-items: center;
     width: 100vw;
     z-index: 10;
     background-color: $bgColor;
     // box-shadow: 0 0 5px white;
-    padding: 5px;
+    // padding: 5px;
     transition: all 0.4s ease-in 0s;
 
     color: white;
-
-    @media (min-width: $desktopWidth) {
-        transform: translateY(-100%);
-        animation: slideIn 0.5s ease-in forwards;
-        flex-direction: row;
-    }
 
     #nav-tree {
         display: block;
@@ -120,12 +115,93 @@ header {
         margin: 0 20px;
         text-align: center;
         font-size: 2.5em;
+    }
+}
 
-        @media (min-width: $desktopWidth) {
-            font-size: 3.5em;
-            display: inline-block;
-            text-align: left;
+.menuToggle {
+    position: fixed;
+    z-index: 30;
+    right: 0;
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin-left: auto;
+    padding: 15px;
+    transition: all 0.3s ease-in 0s;
+    transform-origin: center center;
+
+    .toggleSymbol {
+        box-shadow: 0px 2px 12px $fgColor;
+
+        &::before {
+            content: "";
+            display: block;
+            border-bottom: 4px solid $fgColor;
+            margin-top: 8px;
+            transition: all 0.2s ease-in 0s;
         }
+        transition: all 0.3s ease-in 0s;
+    }
+
+    &.active {
+        transform: rotate(180deg);
+        .toggleSymbol:nth-child(2) {
+            transform: translateY(14px) rotate(45deg);
+            margin-left: 70px;
+        }
+
+        .toggleSymbol:nth-child(1) {
+            transform: translateY(14px) rotate(45deg);
+        }
+
+        .toggleSymbol:nth-child(3) {
+            transform: translateY(-10px) rotate(-45deg);
+        }
+    }
+}
+
+.mainMenu {
+    text-align: center;
+    position: fixed;
+    z-index: 20;
+    top: 0;
+    width: 100%;
+    padding-top: 70px;
+    font-family: 'Boogaloo', cursive;
+    font-size: 2.5em;
+    height: 100vh;
+    left: 100%;
+    transition: all 0.2s ease-in 0s;
+    background-color: $bgColor;
+    margin-right: 40px;
+
+    &.active {
+        left: 0;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navLink {
+        display: block;
+        padding: 15px;
+        transition: all 0.1s ease-in 0s;
+
+        &.current {
+            background-color: lighten($bgColor, 12%);
+        }
+
+        &:hover {
+            background-color: $fgColor;
+            color: $bgColor;
+        }
+    }
+
+    .menuItem {
+        padding: 0;
     }
 }
 
@@ -139,10 +215,10 @@ body {
 }
 
 main {
-    padding-top: 180px;
+    // padding-top: 180px;
 
     @media (min-width: $desktopWidth) {
-        padding-top: 130px;
+        // padding-top: 130px;
         transform: translateY(100%);
         animation: slideIn 0.5s ease-in forwards;
     }
@@ -264,6 +340,56 @@ main {
 // *****************************************************************************
 // MEDIA QUERIES
 // *****************************************************************************
+
+// MEDIUM SCREENS **************************************************************
+@media (min-width: 768px) {
+    /*************************************************************************
+     * Header
+     */
+    header {
+        position: fixed;
+        top: 0;
+        flex-direction: row;
+        margin-bottom: 50px;
+
+        h1 {
+            margin: 0 20px;
+            width: auto;
+        }
+    }
+
+    .mainMenu {
+        position: static;
+        width: auto;
+        height: auto;
+        font-size: 2em;
+        flex: 1 1;
+        box-shadow: none;
+        padding: 0;
+
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
+        }
+
+        .navLink {
+            &.current {
+                display: none;
+            }
+
+            &:hover {
+                background-color: $bgColor;
+                color: $fgColor;
+                text-shadow: 0 0 3px white;
+            }
+        }
+    }
+
+    main {
+        margin-top: 130px;
+    }
+}
 
 // LARGE SCREENS ***************************************************************
 @media (min-width: 992px) {

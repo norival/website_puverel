@@ -13,13 +13,19 @@
     </a>
     <h1>{{ title }}</h1>
     {% set currentPath = app.request.pathInfo %}
-    <nav>
+    <a href="#" id="menu-toggle" class="menuToggle d-md-none">
+        <div class="toggleSymbol"></div>
+        <div class="toggleSymbol"></div>
+        <div class="toggleSymbol"></div>
+    </a>
+    <nav class="mainMenu" id="responsive-menu">
         <ul>
         {% for menuItem in menu.menuItems %}
-            <li>
+            <li class="menuItem">
                 <a
                     class="navLink{% if currentPath == path(menuItem.path) %} current{% endif %}"
-                    href="{{ path(menuItem.path) }}">{{ menuItem.name }}</a>
+                    href="{% if currentPath != path(menuItem.path) %}{{ path(menuItem.path) }}{% else %}#{% endif %}"
+                    >{{ menuItem.name }}</a>
             </li>
         {% endfor %}
         </ul>
