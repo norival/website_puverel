@@ -202,7 +202,7 @@ class Quizz
         return $this;
     }
 
-    public function check(int $choice): bool {
+    public function check(string $choice): bool {
         if ($choice === $this->getCurrentSpecies()->getId()) {
             $this->score++;
 
