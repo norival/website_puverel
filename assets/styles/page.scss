@@ -258,10 +258,11 @@ main {
     }
 
     h3 {
-        text-align: center;
-        font-size: 2em;
+        text-align: left;
+        font-size: 2.4em;
         position: relative;
         margin-bottom: 15px;
+        text-shadow: 1px 1px 24px $fgColor;
 
         span {
             // border: 1px solid white;
@@ -271,14 +272,14 @@ main {
             z-index: 1;
         }
 
-        &::before {
-            content: "";
-            display: block;
-            width: 100%;
-            border-bottom: 2px solid $fgColor;
-            position: absolute;
-            top: 50%;
-        }
+        // &::before {
+        //     content: "";
+        //     display: block;
+        //     width: 100%;
+        //     border-bottom: 2px solid $fgColor;
+        //     position: absolute;
+        //     top: 50%;
+        // }
     }
 
     h4 {
