@@ -27,6 +27,7 @@ export class QuizzController
      * @param {Event} event The view event
      */
     handleClickChoice = (event) => {
+        event.preventDefault();
         this.model.checkChoice(this.view.renderResult, event.target.value);
     }
 

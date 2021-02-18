@@ -39,10 +39,19 @@
                     <h2>Feuille {{ quizz.currentTurn }} / {{ quizz.nTurns }}</h2>
                 </div>
                 <div class="col-12">
-                    <img
-                        id="quizz-picture"
-                        src="{{ asset(quizz.currentSpecies.filePath) }}"
-                        alt="Image de la feuille">
+                    <div class="row">
+                        <div class="col-12" id="next-button d-none">
+                            <button class="nextButton"></button>
+                        </div>
+                        <div class="col-12" id="quizz-picture">
+                            <img
+                                src="{{ asset(quizz.currentSpecies.filePath) }}"
+                                alt="Image de la feuille">
+                        </div>
+                        <div class="col-6 d-none" id="wrong-answer">
+                            <img src="#" alt="">
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12">
                     <form action="#">

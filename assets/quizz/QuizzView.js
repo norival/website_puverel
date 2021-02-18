@@ -3,7 +3,7 @@ export class QuizzView
     constructor()
     {
         this.quizz        = document.getElementById('quizz');
-        this.quizzPicture = document.getElementById('quizz-picture');
+        this.quizzPicture = document.querySelector('#quizz-picture img');
         this.quizzChoices = document.getElementById('quizz-choices');
 
         this.quizzChoices.addEventListener('click', (event) => {
@@ -24,31 +24,28 @@ export class QuizzView
     }
 
     renderResult = (result) => {
-        let tpl = `
-            <h2>Bravo !</h2>
-            <p>Tu as réussi ! C'était le ${result.choice.common_name}.</p>
-        `;
+        const goodButton = document.querySelector(`button[value="${result.goodSpecies.id}"]`);
+        const nextButton = document.getElementById('next-button');
+
+        goodButton.classList.add('quizzGoodSpecies');
 
         if (!result.result) {
-            tpl = `
-                <h2>Loupé !</h2>
-                <p>La bonne réponse était ${result.goodSpecies.common_name} et non ${result.choice.common_name}.</p>
-                <p>${result.goodSpecies.description ?? '<em>Aucune description</em>'}</p>
-                <img src="${this.manifest[result.goodSpecies.file_path]}" alt="">
-            `
+            const badButton    = document.querySelector(`button[value="${result.choice.id}"]`);
+            const badImageDiv  = document.getElementById('wrong-answer');
+            const goodImageDiv = document.getElementById('quizz-picture');
+            const badImage     = badImageDiv.querySelector('img');
+
+            badButton.classList.add('quizzBadSpecies');
+            badImageDiv.classList.remove('d-none');
+            badImageDiv.classList.add('quizzBadSpecies');
+            badImage.setAttribute('src', this.manifest[result.choice.file_path]);
+
+            goodImageDiv.classList.remove('col-12');
+            goodImageDiv.classList.add('col-6');
         }
 
-        tpl += `
-            <ul class="buttonList">
-                <li>
-                    <a id="quizz-next" href="/quizz/feuillus/5?next">Suivant</a>
-                </li>
-            </ul>
-        `;
-
-        this.quizz.innerHTML = tpl;
-
-        document.getElementById('quizz-next').addEventListener('click', this.onClickNext);
+        this.quizzChoices.querySelectorAll('button')
+            .forEach(button => button.setAttribute('disabled', true));
     }
 
     /**
@@ -63,7 +60,7 @@ export class QuizzView
         quizzData.choices.forEach(choice => {
             listItems += `
                 <div class="col-12 col-md-6 col-lg-3 mt-4">
-                    <button name="choice" type="submit" value="${choice.id}">
+                    <button class="button" name="choice" type="submit" value="${choice.id}">
                         ${choice.common_name}
                     </button>
                 </div>
@@ -72,7 +69,17 @@ export class QuizzView
 
         const tpl = `
             <h2>Feuille ${quizzData.current_turn} / ${quizzData.n_turns}</h2>
-            <img id="quizz-picture" src="${this.manifest[quizzData.currentSpecies.file_path]}" alt="">
+            <div class="row">
+                <div class="col-12">
+                    <img
+                        id="quizz-picture"
+                        src="${this.manifest[quizzData.currentSpecies.file_path]}"
+                        alt="Image de la feuille">
+                </div>
+                <div class="col-12 d-none" id="wrong-answer">
+                    <img src="#" alt="">
+                </div>
+            </div>
             <form action="/quizz/feuillus/${quizzData.n_species}/result" method="POST">
                 <div id="quizz-choices">
                     <div class="row">
