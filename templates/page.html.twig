@@ -12,7 +12,6 @@
         {{ include('home/nav-tree.html') }}
     </a>
     <h1>{{ title }}</h1>
-    {% set currentPath = app.request.pathInfo %}
     <a href="#" id="menu-toggle" class="menuToggle d-md-none">
         <div class="toggleSymbol"></div>
         <div class="toggleSymbol"></div>
@@ -21,10 +20,11 @@
     <nav class="mainMenu" id="responsive-menu">
         <ul>
         {% for menuItem in menu.menuItems %}
+            {% set currentPath = app.request.pathInfo == path(menuItem.path) %}
             <li class="menuItem">
                 <a
-                    class="navLink{% if currentPath == path(menuItem.path) %} current{% endif %}"
-                    href="{% if currentPath != path(menuItem.path) %}{{ path(menuItem.path) }}{% else %}#{% endif %}"
+                    class="navLink{{ currentPath ? ' current' : '' }}"
+                    href="{{ currentPath ? '#' : path(menuItem.path) }}"
                     >{{ menuItem.name }}</a>
             </li>
         {% endfor %}
