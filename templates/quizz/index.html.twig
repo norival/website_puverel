@@ -1,17 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'page.html.twig' %}
 
-{% block title %}{{ title }}{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('page') }}
     {{ encore_entry_link_tags('quizz') }}
-{% endblock %}
-
-{% block header %}
-    <a id="nav-tree" class="" href="{{ path('home') }}">
-        {{ include('home/nav-tree.html') }}
-    </a>
-    <h1>{{ title }}</h1>
 {% endblock %}
 
 {% block body %}

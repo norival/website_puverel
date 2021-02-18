@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Quizz;
 use App\Repository\QuizzRepository;
 use App\Repository\SpeciesRepository;
+use App\Service\MenuHelper;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -21,7 +22,8 @@ class QuizzController extends AbstractController
         private SessionInterface $session,
         private QuizzRepository $quizzRepo,
         private EntityManagerInterface $em,
-        private SerializerInterface $serializer
+        private SerializerInterface $serializer,
+        private MenuHelper $menuHelper
     ) {
         $this->session->start();
     }
@@ -31,6 +33,7 @@ class QuizzController extends AbstractController
      */
     public function index(int $nSpecies): Response
     {
+        $menu = $this->menuHelper->getMenu('main');
         $quizz = $this->getQuizz($nSpecies);
 
         if ($quizz->isFinished()) {
@@ -45,6 +48,7 @@ class QuizzController extends AbstractController
         return $this->render('quizz/index.html.twig', [
             'title' => "Quizz feuillus : {$quizz->getNSpecies()} espèces",
             'quizz' => $quizz,
+            'menu'  => $menu,
         ]);
     }
 
