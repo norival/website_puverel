@@ -47,7 +47,7 @@ $fgColor: #fbfffb;
 
 .blockLink {
     &:hover {
-        text-shadow: 0 0 3px white;
+        text-shadow: 0 0 3px $fgColor;
     }
 }
 
@@ -86,11 +86,11 @@ header {
     width: 100vw;
     z-index: 10;
     background-color: $bgColor;
-    // box-shadow: 0 0 5px white;
+    // box-shadow: 0 0 5px $fgColor;
     // padding: 5px;
     transition: all 0.4s ease-in 0s;
 
-    color: white;
+    color: $fgColor;
 
     #nav-tree {
         display: block;
@@ -265,7 +265,7 @@ main {
         text-shadow: 1px 1px 24px $fgColor;
 
         span {
-            // border: 1px solid white;
+            // border: 1px solid $fgColor;
             padding: 0 15px;
             background-color: $bgColor;
             position: relative;
@@ -375,14 +375,10 @@ main {
         }
 
         .navLink {
-            &.current {
-                display: none;
-            }
-
             &:hover {
                 background-color: $bgColor;
                 color: $fgColor;
-                text-shadow: 0 0 3px white;
+                text-shadow: 0 0 3px $fgColor;
             }
         }
     }
@@ -417,4 +413,23 @@ main {
         }
     }
 
+}
+
+
+// XXL SCREENS ***************************************************************
+@media (min-width: 1650px) {
+    .mainMenu {
+        position: fixed;
+        top: 110px;
+        left: 0;
+        height: 100vh;
+
+        ul {
+            flex-direction: column;
+        }
+
+        .menuItem {
+            text-align: left;
+        }
+    }
 }
