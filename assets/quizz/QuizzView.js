@@ -24,8 +24,6 @@ export class QuizzView
     }
 
     renderResult = (result) => {
-        console.log(result);
-
         let tpl = `
             <h2>Bravo !</h2>
             <p>Tu as réussi ! C'était le ${result.choice.common_name}.</p>

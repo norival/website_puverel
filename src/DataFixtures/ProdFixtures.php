@@ -171,7 +171,7 @@ class ProdFixtures extends Fixture implements FixtureGroupInterface
         $species->setGenus('Cornus');
         $species->setSpecies('mas');
         $species->setCommonName('cornouiller');
-        $species->setFilePath('cornouiller_feuille.png');
+        $species->setFilePath('cornouiller_feuille1.png');
         $species->setQuizz(15);
         $manager->persist($species);
 
