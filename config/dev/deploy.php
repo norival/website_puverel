@@ -21,7 +21,7 @@ return new class extends DefaultDeployer
         ;
     }
     public function beforePreparing() {
-        /* $this->runRemote('cp {{ deploy_dir }}/repo/.env {{ project_dir }}/.env'); */
+        $this->runRemote('cp {{ deploy_dir }}/repo/.env {{ project_dir }}/.env');
         /* $this->runRemote('cp {{ deploy_dir }}/repo/.env.development {{ project_dir }}/.env.development'); */
     }
 
