@@ -12,9 +12,24 @@
                 <ul class="linkList ressources mt-4">
                     {% for ressource in content.ressources %}
                         <li>
-                            <a class="button" href="{{ path(ressource.path, ressource.params) }}">
-                                {{ ressource.title }}
-                            </a>
+                            {% if ressource.type == "file" %}
+                                <a
+                                    target="_blank" rel="noopener noreferrer"
+                                    class="button"
+                                    href="{{ asset('build/documents/' ~ ressource.path) }}"
+                                    title="{{ ressource.description }}"
+                                    alt="{{ ressource.description }}">
+                                    {{ ressource.title }}
+                                </a>
+                            {% elseif ressource.type == "page" %}
+                                <a
+                                    class="button"
+                                    href="{{ path(ressource.path, ressource.params) }}"
+                                    title="{{ ressource.description }}"
+                                    alt="{{ ressource.description }}">
+                                    {{ ressource.title }}
+                                </a>
+                            {% endif %}
                         </li>
                     {% endfor %}
                 </ul>

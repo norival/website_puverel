@@ -64,7 +64,7 @@ $fgColor: #fbfffb;
         flex-wrap: wrap;
         justify-content: flex-start;
 
-        li {
+        li + li {
             margin-left: 10px;
             margin-bottom: 0;
         }

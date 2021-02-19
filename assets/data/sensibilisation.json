@@ -1,0 +1,65 @@
+{
+    "cours": {
+        "title": "L'écologie c'est quoi ?",
+        "description": "Cours présenté aux membres de FNE Isère, une association de protection de la nature (2019).",
+        "ressources": [
+            {
+                "title": "Cours",
+                "description": "Cours sur les interactions écologiques",
+                "path": "cours_ecologie_interactions.pdf",
+                "type": "file"
+            },
+            {
+                "title": "Diapo",
+                "description": "Diapo sur les interactions écologiques",
+                "path": "diapo_ecologie_interactions.pdf",
+                "type": "file"
+            },
+            {
+                "title": "Activité 1",
+                "description": "Jeu de cartes pour comprendre les interactions écologiques",
+                "path": "activite1_ecologie_interactions.pdf",
+                "type": "file"
+            },
+            {
+                "title": "Activité 2",
+                "description": "Activité pour comprendre les interactions écologiques",
+                "path": "activite2_ecologie_interactions.pdf",
+                "type": "file"
+            }
+        ]
+    },
+    "quizz": {
+        "title": "Quizz : les feuilles des feuillus",
+        "description": "Jeu en ligne pour apprendre à reconnaître jusqu’à 15 espèces de feuillus (2020).",
+        "ressources": [
+            {
+                "title": "5 espèces",
+                "path": "quizz_feuillus",
+                "type": "page",
+                "description": "Quizz pour apprendre à reconnaître les feuilles des feuillus",
+                "params": {
+                    "nSpecies": 5
+                }
+            },
+            {
+                "title": "10 espèces",
+                "path": "quizz_feuillus",
+                "type": "page",
+                "description": "Quizz pour apprendre à reconnaître les feuilles des feuillus",
+                "params": {
+                    "nSpecies": 10
+                }
+            },
+            {
+                "title": "15 espèces",
+                "path": "quizz_feuillus",
+                "type": "page",
+                "description": "Quizz pour apprendre à reconnaître les feuilles des feuillus",
+                "params": {
+                    "nSpecies": 15
+                }
+            }
+        ]
+    }
+}
