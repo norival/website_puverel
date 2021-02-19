@@ -58,8 +58,14 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-12 col-md-4 mb-1 text-md-center">
-                                    <div class="place">
-                                        <i class="fas fa-map-marker-alt"></i>{{ item.place }}
+                                    <div class="places">
+                                        <ul class="mb-0">
+                                            {% for place in item.places %}
+                                                <li>
+                                                    <i class="fas fa-map-marker-alt"></i>{{ place }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4 mb-1 text-md-center">

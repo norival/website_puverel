@@ -1,0 +1,194 @@
+{
+    "Skills": [
+        {
+            "title": "Scientific",
+            "items": [
+                {
+                    "title": "Ecology",
+                    "description": "Theoretical knowledge in biogeochemical cycles, biology, climatology, forest ecology, forest socio-ecosystems, genetic, phylogeny, population dynamics and sylviculture."
+                },
+                {
+                    "title": "Protocol",
+                    "description": "Comfortable with sampling protocol thinking and preparation."
+                },
+                {
+                    "title": "Data analysis",
+                    "description": "Data exploration, uni- and multivariate analyses, linear models and spatial data manipulation are known."
+                },
+                {
+                    "title": "Remote sensing",
+                    "description": "User with R through spectral vegetation index."
+                },
+                {
+                    "title": "[TRADUIRE] Mesures déjà réalisées",
+                    "description": [
+                        {
+                            "title": "Forest",
+                            "description": "Reconnaissance essence, carottage, surface terrière, DBH, dendromicrohabitats, hauteur et distances (télémètre vertex), volume de bois mort debout et au sol."
+                        },
+                        {
+                            "title": "Observatoire Agricole de la Biodiversité",
+                            "description": "Papillons, vers de terre, abeilles solitaires, invertébrés terrestres."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Communication",
+            "items": [
+                {
+                    "title": "Oral presentation",
+                    "description": "f qfqds qsfd fqsdifijfdsq qfdshjlqskd fsqdf uhqsdf sqdf bndsqf"
+                },
+                {
+                    "title": "Relational",
+                    "description": "Sens du contact et de l’écoute."
+                },
+                {
+                    "title": "Rédaction",
+                    "description": "Bonne capacité synthétique"
+                }
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Informatique",
+            "items": [
+                {
+                    "title": "R",
+                    "description": "Utilisatrice depuis 2016, intérêt pour les scripts simples, efficaces et reproducitbles"
+                },
+                {
+                    "title": "ArcGIS/QGIS",
+                    "description": "Utilisatrice depuis 2016"
+                },
+                {
+                    "title": "Git/Vim/LaTeX",
+                    "description": "Novice"
+                }
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Compétences complémentaires",
+            "items": [
+                {
+                    "title": "Façon de travailler",
+                    "description": "Sens de l'organisation, rigueur, sens critique, esprit d'analyse de synthèse, travail autonome et en équipe"
+                },
+                {
+                    "title": "Anglais",
+                    "description": "Bonne compétence écrite et orale"
+                },
+                {
+                    "title": "Permis B",
+                    "description": "Depuis 2013"
+                }
+            ]
+        }
+    ],
+    "Cursus": [
+        {
+            "title": "[TRADUIRE] PhD",
+            "date": "2020-Today",
+            "description": "Conception de solutions de traitement des eaux de ruissellement basées sur l'utilisation de plantes halophiles.",
+            "places": [
+                "CEREMA Est - Nancy"
+            ],
+            "persons": [
+                "Ivana DURICKOVIC",
+                "Guillaume ESCHEVARRIA",
+                "Didier TRECHER"
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Civic service",
+            "date": "2019-2020",
+            "description": "Communication (mailchimp, wordpress, wix). Animation (animation de groupe et cours d’écologie). Terrain (protocoles OAB et arbres remarquables). Rédaction (atlas des mammifères de Rhône-Alpes).",
+            "places": [
+                "FNE Isère"
+            ],
+            "persons": [
+                "Marion HERBIN-SANZ"
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Stage 4 mois",
+            "date": "2019",
+            "description": "Génétique du paysage (papillons de tourbières).",
+            "places": [
+                "LECA, Grenoble"
+            ],
+            "persons": [
+                "Laurence DESPRÈS"
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Master 2 GEOIDES",
+            "date": "2018-2019",
+            "description": "Géographie et Environnement",
+            "places": [
+                "UGA, Grenoble"
+            ],
+            "persons": [
+                "Sylvain BIGOT"
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Stage 6 mois",
+            "date": "2018",
+            "description": "Caractéristiques des arbres à cavité de pic noir",
+            "places": [
+                "IRSTEA, Nogent-sur-Vernisson"
+            ],
+            "persons": [
+                "Yoan PAILLET"
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Master 2 FEN",
+            "date": "2017-2018",
+            "description": "Forest and Environment",
+            "places": [
+                "AgroParisTech, Nancy"
+            ],
+            "persons": [
+                "Daniel EPRON"
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Stage 2 mois",
+            "date": "2017",
+            "description": "Impact du bois mort sur les propriétés du sol.",
+            "places": [
+                "Université de Freiburg"
+            ],
+            "persons": [
+                "Kenton Stutz"
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Master 1 EFCE",
+            "date": "2016-2017",
+            "description": "Sciences de la Vie, de la Terre et de l'Environnement",
+            "places": [
+                "Université de Rennes"
+            ],
+            "persons": [
+                "Denis POINSOT"
+            ]
+        },
+        {
+            "title": "[TRADUIRE] Licence SVTE",
+            "date": "2013-2017",
+            "description": "Sciences de la Vie, de la Terre et de l'Environnement",
+            "places": [
+                "Université de Versailles",
+                "Université de Dijon"
+            ],
+            "persons": [
+                "Florence GARNIER",
+                "Loïc BOLLACHE"
+            ]
+        }
+    ]
+}
