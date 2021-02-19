@@ -12,7 +12,7 @@ return new class extends DefaultDeployer
             // the absolute path of the remote server directory where the project is deployed
             ->deployDir('/home/laxa7358/dev/puverel/')
             // the URL of the Git repository where the project code is hosted
-            ->repositoryUrl('norival:/home/laxa7358/work/carotte/website.git')
+            ->repositoryUrl('git@github.com:norival/website_puverel.git')
             // the repository branch to deploy
             ->repositoryBranch('dev')
             ->remoteComposerBinaryPath('/opt/cpanel/composer/bin/composer')
