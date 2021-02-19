@@ -45,6 +45,7 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "easycorp/easy-deploy-bundle": "^1.0",
         "phpstan/phpstan": "^0.12.74",
         "symfony/browser-kit": "^5.2",
         "symfony/css-selector": "^5.2",
