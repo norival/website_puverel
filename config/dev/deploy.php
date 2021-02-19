@@ -17,7 +17,7 @@ return new class extends DefaultDeployer
             ->repositoryBranch('dev')
             ->remoteComposerBinaryPath('/opt/cpanel/composer/bin/composer')
             ->sharedFilesAndDirs(['.env'])
-            /* ->symfonyEnvironment('dev') */
+            ->symfonyEnvironment('dev')
         ;
     }
     public function beforePreparing() {
